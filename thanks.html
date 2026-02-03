@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Yay! 💖</title>
+</head>
+
+<body style="margin:0; background:#ffe6ec; font-family:Arial, sans-serif;">
+
+  <div style="max-width:520px; margin:40px auto; background:#fff;
+              border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,0.15);
+              padding:28px; text-align:center;">
+
+    <div style="font-size:40px; margin-bottom:10px;">💌</div>
+    <h2 style="color:#ff4d6d; margin:0;">Yay! Сонголтоо баталгаажуулъя 💖</h2>
+
+    <p id="chosenText" style="color:#555; font-size:16px; margin-top:14px; line-height:1.6;">
+      Сонголт: ...
+    </p>
+
+    <a id="sendBtn" href="#"
+       style="display:inline-block; margin-top:18px; background:#ff4d6d; color:white;
+              padding:14px 20px; border-radius:14px; text-decoration:none; font-size:16px;">
+      Send 💘
+    </a>
+
+    <p style="font-size:12px; color:#999; margin-top:16px;">
+      (Send дармагц над руу email явна 😊)
+    </p>
+
+    <p style="margin-top:18px; font-size:14px; color:#333;">
+      Can’t wait to see you 🥰✨
+    </p>
+
+    <a href="./index.html" style="display:inline-block; margin-top:10px; color:#999; text-decoration:underline; font-size:13px;">
+      ← Буцаад өөр сонголт хийх
+    </a>
+  </div>
+
+<script>
+  const TO_EMAIL = "enandin153@gmail.com";
+
+  const PLAN_MAP = {
+    restaurant: "🍽️ Restaurant орох",
+    park: "🌳 Park явах",
+    museum: "🏛️ Музей үзэх",
+    pottery: "🏺 Шавар аяга хийх"
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const planKey = params.get("plan") || "restaurant";
+  const planText = PLAN_MAP[planKey] || PLAN_MAP.restaurant;
+
+  document.getElementById("chosenText").textContent = "Сонголт: " + planText;
+
+  const subject = encodeURIComponent("Date Choice");
+  const body = encodeURIComponent("Миний сонголт: " + planText + " 💖");
+  document.getElementById("sendBtn").href = `mailto:${TO_EMAIL}?subject=${subject}&body=${body}`;
+</script>
+
+</body>
+</html>
